@@ -1,40 +1,26 @@
 package com.example.demo.vo;
 
+import lombok.*;
+import lombok.extern.slf4j.Slf4j;
+
+//@Getter
+//@Setter
+//@ToString
+//@AllArgsConstructor
+//@NoArgsConstructor
+//@RequiredArgsConstructor
+@Builder
+@Data
+@Slf4j
+
 public class Member {
     private Long id;
     private String name;
     private String email;
     private int age;
 
-    public Long getId() {
-        return id;
-    }
+    Member member = Member.builder().id(1002L).name("홍길동").build();
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
 }
