@@ -5,6 +5,7 @@ import com.boot.example.domain.SampleDTO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -14,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/example")  // 전부 '/example'로 맵핑 잡겠다.
+@RequestMapping("/example")  // 공통주소 잡기. 전부 '/example'로 맵핑 잡겠다.
 public class ExampleController {
 
     @GetMapping("/exam01") // '/example/exam01'
@@ -22,7 +23,7 @@ public class ExampleController {
         model.addAttribute("data", "현재 페이지에 출력 데이터"); //속성은 데이터(변수명), 값은 문자열
         return "/example/exam01";  //example 폴더에 exam01 파일을 model로 열겠다. (포워드)
     }
-
+ModelAndView
     @GetMapping("/form")
     public String form(){
         return "example/form";
