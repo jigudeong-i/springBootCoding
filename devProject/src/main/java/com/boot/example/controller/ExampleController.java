@@ -23,7 +23,7 @@ public class ExampleController {
         model.addAttribute("data", "현재 페이지에 출력 데이터"); //속성은 데이터(변수명), 값은 문자열
         return "/example/exam01";  //example 폴더에 exam01 파일을 model로 열겠다. (포워드)
     }
-ModelAndView
+
     @GetMapping("/form")
     public String form(){
         return "example/form";
@@ -76,15 +76,15 @@ ModelAndView
 
         return "example/test";
     }
-
-    @GetMapping("/exam02")
-    //public String exam02(Model model, @RequestParam String language, @RequestParam String word){
-    public String exam01(Model model,
-                         @RequestParam(required = false, defaultValue = "java") String language,
-                         @RequestParam(required = false) String word){
-        model.addAttribute("language", language);
-        model.addAttribute("word", word);
-
-        return "example/exam02";
-    }
+//
+//    @GetMapping("/exam02")
+//    //public String exam02(Model model, @RequestParam String language, @RequestParam String word){
+//    public String exam01(Model model,
+//                         @RequestParam(required = false, defaultValue = "java") String language,
+//                         @RequestParam(required = false) String word){
+//        model.addAttribute("language", language);
+//        model.addAttribute("word", word);
+//
+//        return "example/exam02";
+//    }
 }
