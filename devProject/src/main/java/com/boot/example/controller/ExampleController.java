@@ -6,7 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -26,7 +25,7 @@ public class ExampleController {
 
     @GetMapping("/form")
     public String form(){
-        return "example/form";
+        return "example/form";  //example 폴더에 form 파일을 model로 열겠다. (포워드)
     }
 
     @GetMapping("/exam03")
@@ -41,7 +40,6 @@ public class ExampleController {
     @PostMapping("/exam04")
     //public String exam04(@ModelAttribute SampleDTO dto, Model model){
     public String exam04(@ModelAttribute SampleDTO dto){
-
         //model.addAttribute("dto", dto);
         return "example/exam04";
     }
@@ -87,4 +85,10 @@ public class ExampleController {
 //
 //        return "example/exam02";
 //    }
+
+    @GetMapping("/exam05")
+    @ResponseBody
+    public String exam05(){
+        return "Data 전송";
+    }
 }
