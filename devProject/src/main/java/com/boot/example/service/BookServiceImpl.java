@@ -16,4 +16,10 @@ public class BookServiceImpl implements BookService{
     public List<Book> bookList(){
         return bookMapper.bookList();
     }
+
+    @Override
+    public int bookInsert(Book book){
+        int result = bookMapper.bookInsert(book);
+        return result;
+    }
 }

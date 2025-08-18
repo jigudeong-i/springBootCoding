@@ -16,4 +16,9 @@
         FROM book
         ORDER BY book_id desc
     </select>
+
+    <insert id="bookInsert" parameterType="com.boot.example.domain.Book">
+        INSERT INTO book (title, author, publisher, publish_date, price)
+        VALUES (#{title}, #{author}, #{publisher}, #{publishDate}, #{price})
+    </insert>
 </mapper>
