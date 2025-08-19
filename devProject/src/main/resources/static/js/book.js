@@ -12,3 +12,17 @@ document.getElementById("insertBtn").addEventListener("click", () => {
 document.getElementById("cancelBtn").addEventListener("click", () => {
     formReset("insertForm");
 });
+
+document.addEventListener('click', (event) => {
+    if (event.target.classList.contains('deleteBtn')){
+        event.preventDefault();
+
+        const row = event.target.closest('tr');
+        const number = row.querySelector('th[scope="row"]').textContent.trim();
+
+        //console.log(`선택한 번호: ${number}`};
+        if(confirm("책정보를 삭제하시겠습니까?")){
+                locationProcess(`/book/bookDelete?bookId=${number}`);
+            }
+        }
+    });

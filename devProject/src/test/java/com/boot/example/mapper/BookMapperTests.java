@@ -28,6 +28,13 @@ public class BookMapperTests {
         int result = bookMapper.bookInsert(book);
         log.info("적용된 행의 수: {}", result); //로그 메세지 템플릿 -> {}는 변수명 명시.
     }
+
+    @Test
+    public void testBookDelete(){
+        Book book = Book.builder().bookId(26).build();
+        int result = bookMapper.bookDelete(book);
+        log.info("삭제된 행의 수: {}", result);
+    }
 }
 
 

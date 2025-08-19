@@ -20,12 +20,13 @@
         <th scope="col">출판사</th>
         <th scope="col">출간연도</th>
         <th scope="col">책가격</th>
+        <th scope="col">삭제여부</th>
       </tr>
       </thead>
       <tbody class="table-group-divider">
       <th:block th:if="${#strings.isEmpty(bookList)}">
         <tr>
-          <td colspan="6">등록된 책이 존재하지 않습니다</td>
+          <td colspan="7">등록된 책이 존재하지 않습니다</td>
         </tr>
       </th:block>
       <th:block th:if="${not #strings.isEmpty(bookList)}">
@@ -36,6 +37,7 @@
           <td th:text="*{publisher}"></td>
           <td th:text="*{publishDate}"></td>
           <td th:text="*{price}"></td>
+          <td><a href="#" class="deleteBtn link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">삭제</a></td>
         </tr>
       </th:block>
       </tbody>

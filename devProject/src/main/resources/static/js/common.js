@@ -22,3 +22,7 @@ const formReset = (selector) => {
     const form = document.getElementById(selector);
     form.reset();
 }
+
+const locationProcess = (url) => {
+    location.href = url;
+}
