@@ -22,6 +22,13 @@
         VALUES (#{title}, #{author}, #{publisher}, #{publishDate}, #{price})
     </insert>
 
+    <update id="bookUpdate" parameterType="com.boot.example.domain.Book">
+        UPDATE book SET
+            title = #{title}, author = #{author}, publisher = #{publisher},
+            publish_date = #{publishDate}, price = #{price}
+        WHERE book_id = #{bookId}
+    </update>
+
     <delete id="bookDelete" parameterType="com.boot.example.domain.Book">
         DELETE FROM book WHERE book_id = #{bookId}
     </delete>

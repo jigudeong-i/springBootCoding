@@ -35,6 +35,18 @@ public class BookMapperTests {
         int result = bookMapper.bookDelete(book);
         log.info("삭제된 행의 수: {}", result);
     }
+
+    @Test
+    public void testBookUpdate(){
+        Book book = Book.builder()
+                .title("한 사람이 이긴다")
+                .author("이해인")
+                .publisher("필름")
+                .publishDate("2025-04-13")
+                .price(19000).bookId(25).build();
+        int result = bookMapper.bookUpdate(book);
+        log.info("수정된 행의 수: {}", result);
+    }
 }
 
 

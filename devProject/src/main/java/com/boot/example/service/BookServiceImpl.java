@@ -24,6 +24,12 @@ public class BookServiceImpl implements BookService{
     }
 
     @Override
+    public int bookUpdate(Book book){
+        int result = bookMapper.bookUpdate(book);
+        return result;
+    }
+
+    @Override
     public int bookDelete(Book book){
         int result = bookMapper.bookDelete(book);
         return result;
