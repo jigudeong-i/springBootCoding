@@ -12,14 +12,15 @@ import java.util.Date;
 @ToString
 @Builder
 public class Student {
-    private int studentNumber;
+    private int no;
+    private String studentNumber;
     private String studentName;
     private String studentId;
     private String studentPassword;
-    private int subjectNumber;
-    private int studentBirth;
+    private String subjectNumber;
+    private String studentBirth;
     private String studentPhone;
     private String studentAddress;
     private String studentEmail;
-    private Date studentDate;
+    private String studentDate;
 }

@@ -14,6 +14,7 @@
     <table class="table table-hover">
       <thead>
       <tr>
+        <th scope="col">순번</th>
         <th scope="col">학번</th>
         <th scope="col">이름</th>
         <th scope="col">아이디</th>
@@ -34,12 +35,17 @@
       </th:block>
       <th:block th:if="${not #strings.isEmpty(studentList)}">
         <tr class="text-left" th:each="student : ${studentList}" th:object="${student}">
-          <th scope="row" th:text="*{studentId}"></th>
+          <th scope="row" th:text="*{no}"></th>
           <td th:text="*{studentNumber}"></td>
           <td th:text="*{studentName}"></td>
           <td th:text="*{studentId}"></td>
           <td th:text="*{studentPassword}"></td>
           <td th:text="*{subjectNumber}"></td>
+          <td th:text="*{studentBirth}"></td>
+          <td th:text="*{studentPhone}"></td>
+          <td th:text="*{studentAddress}"></td>
+          <td th:text="*{studentEmail}"></td>
+          <td th:text="*{studentDate}"></td>
           <td><a href="#" class="updateFormBtn link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">수정</a></td>
           <td><a href="#" class="deleteBtn link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">삭제</a></td>
         </tr>
@@ -47,51 +53,7 @@
       </tbody>
     </table>
   </div>
-
-  <div class="row">
-    <div class="text-center"><h5>책정보 등록</h5></div>
-
-    <form id="insertForm" th:object="${student}">
-      <input type="hidden" th:field="*{bookId}">
-      <div class="mb-3 row">
-        <label for="title" class="col-sm-3 col-form-label">책제목</label>
-        <div class="col-sm-9">
-          <input type="text" class="form-control" th:field="*{title}">
-        </div>
-      </div>
-      <div class="mb-3 row">
-        <label for="author" class="col-sm-3 col-form-label">책저자</label>
-        <div class="col-sm-9">
-          <input type="text" class="form-control" th:field="*{author}">
-        </div>
-      </div>
-      <div class="mb-3 row">
-        <label for="publisher" class="col-sm-3 col-form-label">출판사</label>
-        <div class="col-sm-9">
-          <input type="text" class="form-control" th:field="*{publisher}">
-        </div>
-      </div>
-      <div class="mb-3 row">
-        <label for="publishDate" class="col-sm-3 col-form-label">출간연도</label>
-        <div class="col-sm-9">
-          <input type="date" class="form-control" th:field="*{publishDate}">
-        </div>
-      </div>
-      <div class="mb-3 row">
-        <label for="price" class="col-sm-3 col-form-label">책가격</label>
-        <div class="col-sm-9">
-          <input type="text" class="form-control" th:field="*{price}">
-        </div>
-      </div>
-      <div class="text-end">
-        <button type="button" class="btn btn-primary btn-sm" id="insertBtn">책정보등록</button>
-        <button type="button" class="btn btn-primary btn-sm" id="cancelBtn">다시입력</button>
-      </div>
-    </form>
   </div>
-</div>
 
-<script src="/js/common.js"></script>
-<script src="/js/student.js"></script>
 </body>
 </html>
