@@ -23,4 +23,6 @@ public class Student {
     private String studentAddress;
     private String studentEmail;
     private String studentDate;
+
+    private Subject subject;
 }

@@ -3,14 +3,14 @@ package com.boot.example.domain;
 
 import lombok.*;
 
-@Getter
-@Setter
-@NoArgsConstructor
+@Data
 @AllArgsConstructor
-@ToString
+@NoArgsConstructor
 @Builder
 public class Subject {
     private int no;
     private String subjectNumber;
     private String subjectName;
+
+
 }

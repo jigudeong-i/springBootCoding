@@ -2,24 +2,25 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.boot.example.mapper.StudentMapper">
 
-    <resultMap id="studentResult" type="com.boot.example.domain.Student">    <!-- student에 있는 필드들임을 표기 -->
-        <id column="no" property="no"/>       <!-- 필드명, 컬럼명이 표기가 달라서 하는거임 -->
-        <result column="sd_num" property="studentNumber"/>
-        <result column="sd_name" property="studentName"/>
-        <result column="sd_id" property="studentId"/>
-        <result column="sd_passwd" property="studentPassword"/>
-        <result column="s_num" property="subjectNumber"/>
-        <result column="sd_birth" property="studentBirth"/>
-        <result column="sd_phone" property="studentPhone"/>
-        <result column="sd_address" property="studentAddress"/>
-        <result column="sd_email" property="studentEmail"/>
-        <result column="sd_date" property="studentDate"/>
-    </resultMap>
+<!--    <resultMap id="studentResult" type="com.boot.example.domain.Student">    &lt;!&ndash; student에 있는 필드들임을 표기 &ndash;&gt;-->
+<!--        <id column="no" property="no"/>       &lt;!&ndash; 필드명, 컬럼명이 표기가 달라서 하는거임 &ndash;&gt;-->
+<!--        <result column="sd_num" property="studentNumber"/>-->
+<!--        <result column="sd_name" property="studentName"/>-->
+<!--        <result column="sd_id" property="studentId"/>-->
+<!--        <result column="sd_passwd" property="studentPassword"/>-->
+<!--        <result column="s_num" property="subjectNumber"/>-->
+<!--        <result column="sd_birth" property="studentBirth"/>-->
+<!--        <result column="sd_phone" property="studentPhone"/>-->
+<!--        <result column="sd_address" property="studentAddress"/>-->
+<!--        <result column="sd_email" property="studentEmail"/>-->
+<!--        <result column="sd_date" property="studentDate"/>-->
+<!--    </resultMap>-->
 
-    <select id="studentList" resultMap="studentResult">
-        SELECT
-        no, sd_num, sd_name, sd_id, sd_passwd, s_num, sd_birth, sd_phone, sd_address, sd_email, sd_date
-        FROM student
-        ORDER BY no desc
-    </select>
+<!--    <select id="studentList" resultMap="studentResult">-->
+<!--        SELECT-->
+<!--        no, sd_num, sd_name, sd_id, sd_passwd, s_num, sd_birth, sd_phone, sd_address, sd_email, sd_date-->
+<!--        FROM student-->
+<!--        ORDER BY no desc-->
+<!--    </select>-->
+
 </mapper>
