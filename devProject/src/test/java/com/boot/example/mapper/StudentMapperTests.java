@@ -19,7 +19,7 @@ public class StudentMapperTests {
     }
 
     @Test
-    public void studentAutoNumberTest(){
+    public void studentAutoNumberTest(){   
         String studentNumber = studentMapper.studentAutoNumber("01");
         log.info("자동으로 구한 학번(컴퓨터학과 선택시): {}", studentNumber);
     }
