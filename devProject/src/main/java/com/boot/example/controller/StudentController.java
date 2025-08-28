@@ -10,7 +10,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -30,5 +32,25 @@ public class StudentController {
                 List<Subject> subjectList = subjectService.subjectList();
                 model.addAttribute("subjectList", subjectList);
                 return "/student/studentList";
+        }
+
+        @GetMapping("/studentAutoNumber")
+        @ResponseBody
+        public String studentAutoNumber(String subjectNumber){
+                String studentNumber = studentService.studentAutoNumber(subjectNumber);
+                return studentNumber;
+        }
+
+        @PostMapping("/studentIdCheck")
+        @ResponseBody
+        public String studentIdCheck(String studentId){
+                String result = studentService.studentIdCheck(studentId);
+                return result;
+        }
+
+        @PostMapping("/studentInsert")
+        public String studentInsert(Student student){
+                studentService.studentInsert(student);
+                return "redirect:/student/studentList";
         }
 }

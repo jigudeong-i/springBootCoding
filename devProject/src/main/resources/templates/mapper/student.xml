@@ -13,7 +13,7 @@
 <!--        <result column="sd_phone" property="studentPhone"/>-->
 <!--        <result column="sd_address" property="studentAddress"/>-->
 <!--        <result column="sd_email" property="studentEmail"/>-->
-<!--        <result column="sd_date" property="studentDate"/>-->
+<!--        <result column="sd_date" property="regDate"/>-->
 <!--    </resultMap>-->
 
 <!--    <select id="studentList" resultMap="studentResult">-->

@@ -15,7 +15,7 @@ public interface StudentMapper {
             @Result(property = "studentPhone", column = "sd_phone"),
             @Result(property = "studentAddress", column = "sd_address"),
             @Result(property = "studentEmail", column = "sd_email"),
-            @Result(property = "studentDate", column = "sd_date"),
+            @Result(property = "regDate", column = "sd_date"),
             @Result(property = "subject.subjectNumber", column = "s_num"),
             @Result(property = "subject.subjectName", column = "s_name")
     })
@@ -38,7 +38,7 @@ public interface StudentMapper {
             public String studentAutoNumber(@Param("subjectNumber") String subjectNumber);
     @Select("""
             SELECT CASE
-                WHEN EXISTS (SELECT 1 FROM student WHERE sd_id = #{studentId}
+                WHEN EXISTS (SELECT 1 FROM student WHERE sd_id = #{studentId})
                 THEN 1
                 ELSE 0
               END AS result
@@ -48,7 +48,7 @@ public interface StudentMapper {
 
     @Insert("""
             INSERT INTO student(no, sd_num, sd_name, sd_id, sd_passwd, s_num, sd_birth, sd_phone, sd_address, sd_email)
-            VALUES(student_seq.nextval, #{student.studentNumber}, #{student.studentName}, #{student.studentId}, #{student.studentPasswd},
+            VALUES(student_seq.nextval, #{student.studentNumber}, #{student.studentName}, #{student.studentId}, #{student.studentPassword},
                     #{student.subject.subjectNumber}, #{student.studentBirth}, #{student.studentPhone}, #{student.studentAddress}, #{student.studentEmail})                    
             """)
     public int studentInsert(@Param("student") Student student);
