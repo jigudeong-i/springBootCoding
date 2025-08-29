@@ -1,10 +1,7 @@
 package com.spring.client.board.mapper;
 
 import com.spring.client.board.vo.Board;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -26,4 +23,10 @@ public interface BoardMapper {
             ORDER BY b_num desc
     """)
     public List<Board> boardList(Board board); /* 검색 포함 리스트 */
+
+    @Insert("""
+            INSERT INTO spring_board(b_num, b_name, b_title, b_content, b_pwd)
+            VALUES(spring_board_seq.nextval, #{board.boardName}, #{board.boardTitle}, #{board.boardContent}, #{board.boardPasswd})
+    """)
+    public int boardInsert(@Param("board") Board board);
 }

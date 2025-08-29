@@ -7,9 +7,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class MainController {
 
-    @ResponseBody
+//    @ResponseBody
+//    @GetMapping("/")
+//    public String home() {
+//        return "프로젝트 메인 확인";
+//    }
+//
+//    실제 메인 페이지
     @GetMapping("/")
-    public String home() {
-        return "프로젝트 메인 확인";
+    public String main(){
+        return "client/main";
     }
 }
