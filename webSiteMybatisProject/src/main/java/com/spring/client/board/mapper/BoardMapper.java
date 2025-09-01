@@ -4,6 +4,7 @@ import com.spring.client.board.vo.Board;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Mapper
 public interface BoardMapper {
@@ -29,4 +30,26 @@ public interface BoardMapper {
             VALUES(spring_board_seq.nextval, #{board.boardName}, #{board.boardTitle}, #{board.boardContent}, #{board.boardPasswd})
     """)
     public int boardInsert(@Param("board") Board board);
+
+    @Update("UPDATE spring_board SET b_readcnt = b_readcnt + 1 WHERE b_num = #{boardNumber}")
+    public int readCntUpdate(@Param("boardNumber") int boardNumber);
+
+    @ResultMap("boardResult")
+    @Select("""
+            SELECT
+                b_num, b_name, b_title, b_content,
+                TO_CHAR(b_date, 'YYYY-MM-DD HH24:MI:SS') AS b_date, b_readcnt
+            FROM spring_board
+            WHERE b_num = #{boardNumber}
+    """)
+    public Optional<Board> boardDetail(@Param("boardNumber") int boardNumber);
+
+    @UpdateProvider(type = BoardSqlProvider.class, method = "updateQuery")
+    public int boardUpdate(Board board);
+
+    @Delete("DELETE FROM spring_board WHERE b_num = #{boardNumber}")
+    public int boardDelete(@Param("boardNumber") int boardNumber);
+
 }
+
+

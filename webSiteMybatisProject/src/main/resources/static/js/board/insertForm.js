@@ -1,3 +1,4 @@
+
 document.getElementById("boardInsertBtn").addEventListener("click", ()=> {
     if(!chkData("#boardName", "작성자명을")) return;
     else if(!chkData("#boardTitle", "제목을")) return;
