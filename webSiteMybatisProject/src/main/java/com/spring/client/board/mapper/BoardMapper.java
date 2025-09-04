@@ -24,9 +24,10 @@ public interface BoardMapper {
     """)
     public List<Board> boardList(Board board); /* 검색 포함 리스트 */
 
+
     @Insert("""
             INSERT INTO spring_board(b_num, b_name, b_title, b_content, b_pwd)
             VALUES(spring_board_seq.nextval, #{board.boardName}, #{board.boardTitle}, #{board.boardContent}, #{board.boardPasswd})
     """)
-    public int boardInsert(@Param("board") Board board);
+    public int boardInsert(@Param("board") Board board); //삽입된 행 수(int) 리턴
 }

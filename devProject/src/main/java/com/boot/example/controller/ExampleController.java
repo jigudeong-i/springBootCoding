@@ -33,7 +33,7 @@ public class ExampleController {
     public String exam03(@RequestParam String name, @RequestParam(required = false, defaultValue = "0") int age, Model model){  //나이는 필수가 아니다. 입력 안할시 0으로 처리.
         model.addAttribute("name", name);
         model.addAttribute("age", age);
-        return "example/exam03";
+        return "/example/exam03";
     }
 
     // @ModelAttribute는 전달받은 파라미터를 Model에 담아서 전달하는 어노테이션
@@ -41,7 +41,7 @@ public class ExampleController {
     //public String exam04(@ModelAttribute SampleDTO dto, Model model){
     public String exam04(@ModelAttribute SampleDTO dto){
         //model.addAttribute("dto", dto);
-        return "example/exam04";
+        return "/example/exam04";
     }
 
     @GetMapping("/test")
