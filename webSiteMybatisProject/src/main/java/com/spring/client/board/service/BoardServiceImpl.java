@@ -23,4 +23,37 @@ public class BoardServiceImpl implements BoardService{
         int result = boardMapper.boardInsert(board);
         return result;
     }
+
+    @Override
+    public Board boardDetail(int boardNumber){
+        boardMapper.readCntUpdate(boardNumber);
+        return boardMapper.boardDetail(boardNumber).map(board -> {
+            board.setBoardContent(
+                    board.getBoardContent().replaceAll("\n", "<br />")
+            );
+            return board;
+        })
+        .orElse(new Board());
+    }
+
+    // 글 수정 폼 구현
+    @Override
+    public Board updateForm(int boardNumber){
+        Board updateData = boardMapper.boardDetail(boardNumber).orElse(new Board());
+        return updateData;
+    }
+
+    //글 수정 구현
+    @Override
+    public int boardUpdate(Board board){
+        int result = boardMapper.boardUpdate(board);
+        return result;
+    }
+
+    //글 삭제 구현
+    @Override
+    public int boardDelete(int boardNumber){
+        int result = boardMapper.boardDelete(boardNumber);
+        return result;
+    }
 }

@@ -1,4 +1,4 @@
-function checkData(selector, message){
+function chkData(selector, message){
     const element = document.querySelector(selector);
     const value = element.value.trim();
 
