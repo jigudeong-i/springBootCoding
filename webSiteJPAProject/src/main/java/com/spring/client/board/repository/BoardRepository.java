@@ -1,11 +1,15 @@
 package com.spring.client.board.repository;
 
 import com.spring.client.board.domain.Board;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -34,7 +38,6 @@ public interface BoardRepository extends JpaRepository<Board, Long> {
 
     Page<Board> findByTitleContaining(String keyword, Pageable pageable);
 
-
     /*JPQL
     JPA에서 사용하는 객체지향 쿼리 언어이다.
     데이터 베이스 SQL 쿼리 언어와 유사하지만 테이블과 컬럼 이름 대신
@@ -58,4 +61,8 @@ public interface BoardRepository extends JpaRepository<Board, Long> {
     @Query(value = "SELECT no, name, title, content, hit, reg_date FROM boot_board ORDER BY no DESC", nativeQuery = true)
     public List<Board> boardAllList();
 
+    @Transactional
+    @Modifying
+    @Query("DELETE FROM Board b WHERE b.no BETWEEN :start AND :end")
+    void deleteByIdBetween(@Param("start") Long start, @Param("end") Long end);
 }

@@ -6,6 +6,7 @@ import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
 
@@ -45,7 +46,20 @@ public class Board {
     @ColumnDefault(value = "0")
     private Integer hit = 0;
 
-    // @Transient: 필드를 매핑하지 않을 때 사용
+    // @Transient: 컬럼과 매핑하지 않고 필드로만 사용하고자 할때 씀.
+    // jakarta.persistence.Transient로 임포트.
+    // org.springframework.web.multipart.MultipartFile로 임포트 .
     // 객체 타입을 사용하는 이유는 null을 리턴할 수 있기 때문.
+
+    @Transient
+    private MultipartFile file;  // 파일 업로드를 위한 필드
+
+    @Column
+    private String filename = "";  // 실제 서버에 저장할 파일명
+
+    //@Column
+    //private String thumbname  =""; // 실제 서버에 저장할 썸네일 이미지 파일명
+
+
 
 }
