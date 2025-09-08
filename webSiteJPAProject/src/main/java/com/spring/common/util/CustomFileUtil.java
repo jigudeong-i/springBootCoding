@@ -93,4 +93,34 @@ public class CustomFileUtil {
         }
         return ResponseEntity.ok().headers(headers).body(resource);
     }
+
+//    public void deleteFile(String fileName){
+//        if (fileName == null){
+//            return;
+//        }
+//        Path filePath = Paths.get(uploadPath, fileName);
+//        try {
+//            Files.deleteIfExists(filePath);
+//        } catch (IOException e){
+//            throw new RuntimeException(e.getMessage());
+//        }
+//    }
+    //썸네일 파일 및 파일 삭제
+    public void deleteFile(String fileName){
+        if(fileName == null){
+            return;
+        }
+        //썸네일이 있는지 확인하고 삭제
+        String thumbnailFileName = "s_" + fileName;
+        Path thumbnailPath = Paths.get(uploadPath, thumbnailFileName);
+        Path filePath = Paths.get(uploadPath, fileName);
+
+        try {
+            Files.deleteIfExists(filePath);
+            Files.deleteIfExists(thumbnailPath);
+        } catch (IOException e){
+            throw new RuntimeException(e.getMessage());
+        }
+    }
+
 }

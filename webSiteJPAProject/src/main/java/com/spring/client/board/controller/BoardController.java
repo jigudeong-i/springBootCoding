@@ -86,17 +86,43 @@ public class BoardController {
         return "client/board/updateForm";
     }
 
+//    @PostMapping("/boardUpdate")
+//    public String boardUpdate(Board board) {
+//    boardService.boardUpdate(board);
+//    return "redirect:/board/"+board.getNo();
+//    }
+
     @PostMapping("/boardUpdate")
     public String boardUpdate(Board board){
+        Board updateData = boardService.getBoard(board.getNo());
+
+        if(!board.getFile().isEmpty()){ // 새로 업로드 파일이 존재하면
+            if(updateData.getFilename()!=null){ // 기존 파일이 존재하면
+                fileUtil.deleteFile(updateData.getFilename());
+            }
+            String uploadFileName = fileUtil.saveFile(board.getFile());
+            board.setFilename(uploadFileName);
+        }
         boardService.boardUpdate(board);
         return "redirect:/board/"+board.getNo();
     }
 
+
+//    @PostMapping("/boardDelete")
+//    public String boardDelete(Board board){
+//        boardService.boardDelete(board);
+//        return "redirect:/board/boardList";
+//    }
     @PostMapping("/boardDelete")
     public String boardDelete(Board board){
+        Board deleteData = boardService.getBoard(board.getNo());
+        if(deleteData.getFilename()!= null){ // 기존 파일이 존재하면
+            fileUtil.deleteFile(deleteData.getFilename());
+        }
         boardService.boardDelete(board);
         return "redirect:/board/boardList";
     }
+
 
     // 업로드 파일 보여주기
     @ResponseBody
