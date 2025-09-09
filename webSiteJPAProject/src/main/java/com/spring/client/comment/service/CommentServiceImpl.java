@@ -2,12 +2,16 @@ package com.spring.client.comment.service;
 
 import com.spring.client.comment.domain.Comment;
 import com.spring.client.comment.repository.CommentRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
+@RequiredArgsConstructor
 public class CommentServiceImpl implements CommentService{
-    private  final CommentRepository commentRepository;
+    private final CommentRepository commentRepository;
 
     @Override
     public List<Comment> commentList(Comment comment){

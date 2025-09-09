@@ -33,6 +33,14 @@ public class CommentRepositoryTests {
         comment1.setBody("실패한 자가 패배하는것이 아니라 포기한 자가 패배하는 것이다.");
         comment1.setArticle(article);
         log.info("### comment1 테이블에 두번째 데이터 입력");
+        commentRepository.save(comment1);
+
+        Comment comment2 = new Comment();
+        comment2.setNickname("강희수");
+        comment2.setBody("단 한번의 노력으로 자기의 바람을 성취할 수 없다.");
+        comment2.setArticle(article);
+        log.info("### comment2 테이블에 세번째 데이터 입력");
+        commentRepository.save(comment2);
 
         Comment comment3 = new Comment();
         comment3.setNickname("김영희");
