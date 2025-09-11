@@ -18,3 +18,7 @@ textarea { resize: none; }
 
 /*clone 대상 적용 스타일*/
 #item-template{display:none;}
+
+/*map은 높이가 반드시 필요하다*/
+#map{ height:500px; }
+

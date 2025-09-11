@@ -84,7 +84,7 @@ document.addEventListener("click", function(e){
         const card = e.target.closest("div.comment");
         document.getElementById("id").value = card.dataset.id;
 
-        const nickname = care.querySelector(".card-header .name").textContent;
+        const nickname = card.querySelector(".card-header .name").textContent;
         const nicknameInput = document.getElementById("nickname");
         nicknameInput.value = nickname;
         nicknameInput.readOnly = true;
@@ -159,7 +159,7 @@ document.addEventListener("click", function(e){
                 }
             }
         })
-        ,catch(error => {
+        .catch(error => {
             alert("시스템에 문제가 있어 잠시 후 다시 진행해주세요.")
             console.error(error);
         });

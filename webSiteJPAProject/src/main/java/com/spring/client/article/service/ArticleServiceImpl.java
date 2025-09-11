@@ -2,7 +2,6 @@ package com.spring.client.article.service;
 
 import com.spring.client.article.domain.Article;
 import com.spring.client.article.repository.ArticleRepository;
-import com.spring.client.board.repository.BoardRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

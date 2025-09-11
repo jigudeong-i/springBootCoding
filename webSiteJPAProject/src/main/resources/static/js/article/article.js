@@ -7,19 +7,12 @@ if(insertFormBtn){
 
 const articleListBtn = document.getElementById("articleListBtn");
 if(articleListBtn){
-    articleListBtn.addEventListener("click" => {
+    articleListBtn.addEventListener("click", () => {
         locationProcess("/article/articleList");
     });
 }
 
 const articleInsertBtn = document.getElementById("articleInsertBtn");
-if(articleListBtn){
-    articleListBtn.addEventListener("click", ()=>{
-        locationProcess("/article/articleList");
-    });
-}
-
-const articleListBtn = document.getElementById("articleInsertBtn");
 if(articleInsertBtn){
     articleInsertBtn.addEventListener("click", ()=>{
         if(!chkData("#name", "작성자명을")) return;

@@ -67,6 +67,6 @@ public class ArticleController {
     @PostMapping("/articleDelete")
     public String articleDelete(Article article) {
         articleService.articleDelete(article);
-        return "redirect:/article/boardList";
+        return "redirect:/article/articleList";
     }
 }
