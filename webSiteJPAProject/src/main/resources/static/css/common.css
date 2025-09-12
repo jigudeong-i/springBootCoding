@@ -22,3 +22,5 @@ textarea { resize: none; }
 /*map은 높이가 반드시 필요하다*/
 #map{ height:500px; }
 
+#media-template{ display:none; }
+

@@ -7,11 +7,10 @@ import java.util.List;
 
 @Service
 public interface ArticleService {
-    public List<Article> articleList(Article article);
-    public void articleInsert(Article article);
-    public Article getArticle(Long no);
-    public Article articleHitUpdate(Article article);       // HitUpdate를 한 이유는 조회수까지 같이 올라가야해서
-    public Article articleDetail(Article article);
-    public void articleUpdate(Article article);
-    public void articleDelete(Article article);
+    List<Article> articleList(Article article);
+    void articleInsert(Article article);     // HitUpdate를 한 이유는 조회수까지 같이 올라가야해서
+    Article articleDetail(Article article);
+    Article updateForm(Article article);
+    void articleUpdate(Article article);
+    void articleDelete(Article article);
 }
