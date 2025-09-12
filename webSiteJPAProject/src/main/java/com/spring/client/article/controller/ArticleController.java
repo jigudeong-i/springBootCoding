@@ -14,13 +14,17 @@ import java.util.List;
 @RequestMapping("/article/*")
 @RequiredArgsConstructor
 public class ArticleController {
+    /* 생성자로 의존성 주입을 하며 final 키워드가 붙은 필드에 대해 생성자를 만들어준다.
+     * 스프링 개발팀에서 생성자 주입을 사용할 것을 권장하는 이유는
+     * 한번 의존성 주입을 받은 객체는 프로그램이 끝날 때까지 변하지 않는 특징을
+     * 가지므로 불변성을 표시해주는 것이 좋기 때문이다. -> 객체의 불변성(Immutability) 보장
+     * */
     private final ArticleService articleService;
 
     @GetMapping("/articleList")
     public String articleList(Article article, Model model) {
         List<Article> articleList = articleService.articleList(article);
         model.addAttribute("articleList", articleList);
-
         return "client/article/articleList";
     }
 
@@ -41,10 +45,6 @@ public class ArticleController {
         Article detail = articleService.articleDetail(article);
         model.addAttribute("detail", detail);
 
-        /*String에서 줄바꿈(newline)은 Window에서 \r\n, Linux에서 \n으로 표현된다.
-         * 하지만 이런 방식은, 서로 다른 종류의 OS에서 동작하는 프로그램에서 문제가 발생할 수 있다.
-         * [참고]String#format()의 %n: String#format()에서 %n은 line separator를 의미한다.
-         */
         String newLine = System.getProperty("line.separator").toString();
         model.addAttribute("newLine", newLine);
 
@@ -53,7 +53,7 @@ public class ArticleController {
 
     @PostMapping("/updateForm")
     public String updateForm(Article article, Model model) {
-        Article updateData = articleService.getArticle(article.getNo());
+        Article updateData = articleService.updateForm(article);
         model.addAttribute("updateData", updateData);
         return "client/article/updateForm";
     }
