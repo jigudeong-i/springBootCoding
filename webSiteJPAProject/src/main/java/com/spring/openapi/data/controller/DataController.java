@@ -53,5 +53,18 @@ public class DataController {
         return dataService.animalDaejeonList(animalDaejeonDTO);
     }
 
+    //유기동물공고현황 상세조회
+    @GetMapping(value="/animalDaejeonItemView/{animalSeq}")
+    public String animalDaejeonItemView(@PathVariable String animalSeq, AnimalDaejeonDTO animalDaejeonDTO, Model model){
+        model.addAttribute("animalSeq", animalSeq);
+        return "data/animalDaejeonItemView";
+    }
+
+    @ResponseBody
+    @PostMapping(value="/animalDaejeonItem", consumes = "application/json", produces = "application/xml; charset=UTF-8")
+    public String animalDaejeonItem(@RequestBody AnimalDaejeonDTO animalDaejeonDTO) throws Exception{
+        return dataService.animalDaejeonItem(animalDaejeonDTO);
+    }
+
 
 }

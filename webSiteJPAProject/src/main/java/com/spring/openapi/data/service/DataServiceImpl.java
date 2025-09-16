@@ -65,6 +65,20 @@ public class DataServiceImpl implements DataService{
         return site;
     }
 
+    // 요청 url: http://localhost:8080/data/animalDeajeonItem?animalSeq=44348
+    @Override
+    public String animalDaejeonItem(AnimalDaejeonDTO animalDaejeonDTO){
+        try{
+            String baseUrl = "http://apis.data.go.kr/6300000/animalDaejeonService/animalDaejeonItem";
+            String params = String.format("?serviceKey=%s&animalSeq=%s", serviceKey, animalDaejeonDTO.getAnimalSeq());
+            String site = baseUrl + params;
+
+            OpenApiDTO openApiDTO = new OpenApiDTO(site, "GET");
+            return URLConnectUtil.openAPIData(openApiDTO).toString();
+        } catch (Exception e) {
+            return "API 호출 중 오류 발생";
+        }
+    }
 
 
 }
