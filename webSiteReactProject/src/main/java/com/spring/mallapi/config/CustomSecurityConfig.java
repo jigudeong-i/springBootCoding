@@ -2,13 +2,17 @@ package com.spring.mallapi.config;
 
 import java.util.Arrays;
 
+import com.spring.mallapi.security.filter.JWTCheckFilter;
+import com.spring.mallapi.security.handler.CustomAccessDeniedHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -20,6 +24,7 @@ import lombok.RequiredArgsConstructor;
 
 @Configuration
 @RequiredArgsConstructor
+@EnableMethodSecurity
 public class CustomSecurityConfig {
     @Bean
     PasswordEncoder passwordEncoder() {
@@ -43,6 +48,14 @@ public class CustomSecurityConfig {
             config.failureHandler(new APILoginFailHandler());  // 추가
         });
 
+        /* JWT 체크 추가 */
+        http.addFilterBefore(new JWTCheckFilter(), UsernamePasswordAuthenticationFilter.class);
+
+        /* 접근제한 시 CustomAccessDeniedHandler를 활용하도록 설정 */
+        http.exceptionHandling(config -> {
+            config.accessDeniedHandler(new CustomAccessDeniedHandler());
+        });
+
         return http.build();
     }
 
@@ -59,5 +72,4 @@ public class CustomSecurityConfig {
 
         return source;
     }
-
 }
