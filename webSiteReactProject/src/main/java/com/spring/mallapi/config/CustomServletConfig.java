@@ -15,6 +15,7 @@ public class CustomServletConfig implements WebMvcConfigurer {
         registry.addFormatter(new LocalDateFormatter());
     }
 
+<<<<<<< HEAD
     @Override
     public void addCorsMappings(CorsRegistry registry){
         registry.addMapping("/**")
@@ -23,4 +24,18 @@ public class CustomServletConfig implements WebMvcConfigurer {
                 .maxAge(300)
                 .allowedHeaders("Authorization", "Cache-Control", "Content-Type");
     }
+=======
+
+
+
+
+//    @Override
+//    public void addCorsMappings(CorsRegistry registry){
+//        registry.addMapping("/**")
+//                .allowedOrigins("*")
+//                .allowedMethods("HEAD", "GET", "POST", "PUT", "DELETE", "OPTIONS")
+//                .maxAge(300)
+//                .allowedHeaders("Authorization", "Cache-Control", "Content-Type");
+//    }
+>>>>>>> ba67dafdb5f72ce3388b19ca2bc89c64c9c85c94
 }
